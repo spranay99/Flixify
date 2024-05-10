@@ -1,19 +1,32 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { LOGIN_BACKGROUND_IMG } from "../utils/constants";
-import Logo from "../assets/Logo.png";
+import Header from "./Header";
+import { checkValidData } from "../utils/validate";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
+  const [errorMessage, setErrorMessage] = useState(null);
+
+  const name = useRef("");
+  const email = useRef("");
+  const password = useRef("");
 
   const toggleSignInForm = () => {
     setIsSignInForm(!isSignInForm);
   };
 
+  const handleButtonClick = () => {
+    const message = checkValidData(
+      name.current.value,
+      email.current.value,
+      password.current.value
+    );
+    setErrorMessage(message);
+  };
+
   return (
-    <div className="overflow-hidden">
-      <header className="max-w-[1200px] p-5 mx-auto fixed z-10 xl:left-52 left-0 ">
-        <img src={Logo} alt="logo" className="w-32" />
-      </header>
+    <div>
+      <Header />
       <div className="w-screen h-screen absolute">
         <img
           className="fixed w-full h-full object-cover"
@@ -31,22 +44,29 @@ const Login = () => {
         </h1>
         {!isSignInForm && (
           <input
+            ref={name}
             className="p-4 rounded-md my-2 w-full bg-[#333333] border-2 transition-all duration-[.1s] border-transparent placeholder-[#868586]  focus:border-[#fff] focus:outline-0"
             type="text"
             placeholder="Full Name"
           />
         )}
         <input
+          ref={email}
           className="p-4 rounded-md my-2 w-full bg-[#333333] border-2 transition-all duration-[.1s] border-transparent placeholder-[#868586]  focus:border-[#fff] focus:outline-0"
           type="text"
           placeholder="Email Address"
         />
         <input
+          ref={password}
           className="p-4 rounded-md my-2 w-full bg-[#333333] border-2 transition-all duration-[.1s] border-transparent placeholder-[#868586]  focus:border-[#fff] focus:outline-0"
           type="password"
           placeholder="Password"
         />
-        <button className="p-4 my-6 text-md rounded-md bg-[#e50914] hover:bg-[#d6180b] transition-all duration-[.1s] w-full font-medium">
+        <p className="text-[#e50914] text-md font-bold">{errorMessage}</p>
+        <button
+          className="p-4 my-6 text-md rounded-md bg-[#e50914] hover:bg-[#d6180b] transition-all duration-[.1s] w-full font-medium"
+          onClick={handleButtonClick}
+        >
           {isSignInForm ? "Sign In" : "Sign Up"}
         </button>
         {isSignInForm ? (
