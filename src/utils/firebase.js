@@ -9,7 +9,7 @@ import { getAuth } from "firebase/auth";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  apiKey: "AIzaSyAq2oHtc3cJrGXXBmz820bMHhDCjGxJs4g",
   authDomain: "flixify-f3d15.firebaseapp.com",
   projectId: "flixify-f3d15",
   storageBucket: "flixify-f3d15.appspot.com",
