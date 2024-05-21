@@ -1,11 +1,14 @@
 import React from "react";
 import { IMAGE_CDN_URL } from "../utils/constants";
+import { Link } from "react-router-dom";
 
-const MovieCard = ({ posterPath }) => {
+const MovieCard = ({ id, posterPath }) => {
   return (
-    <div className="w-48">
-      <img src={IMAGE_CDN_URL + posterPath} alt="Movie Name" />
-    </div>
+    <Link to={`/browse/watch/${id}`}>
+      <div className="w-48 cursor-pointer">
+        <img src={IMAGE_CDN_URL + posterPath} alt="Movie Name" />
+      </div>
+    </Link>
   );
 };
 

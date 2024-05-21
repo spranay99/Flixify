@@ -8,6 +8,9 @@ import { useNavigate } from "react-router-dom";
 import { toggleGPTSearchView } from "../utils/gptSlice";
 import { SUPPORTED_LANGUAGES } from "../utils/constants";
 import { changeLanguage } from "../utils/configSlice";
+import { FaRegBell } from "react-icons/fa6";
+import { IoSearch } from "react-icons/io5";
+
 const Header = () => {
   const dispatch = useDispatch();
 
@@ -55,36 +58,59 @@ const Header = () => {
   };
 
   return (
-    <div className="absolute w-screen px-8 py-2 z-10 flex justify-between items-center overflow-x-hidden">
+    <div className="fixed w-screen px-12 py-2 z-50 flex justify-between items-center overflow-x-hidden bg-black">
       <img src={Logo} alt="logo" className="w-32" />
       {user && (
-        <div className="flex items-center gap-3">
-          {showGPTSearch && (
-            <select
-              className="p-2 text-white bg-black text-md rounded-md"
-              onChange={handleLanguageChange}
+        <>
+          <ul className="flex gap-6 text-white cursor-pointer ">
+            {[
+              "Home",
+              "TV Shows",
+              "Movies",
+              "Popular",
+              "My List",
+              "Browse by Languages",
+            ].map((item, ind) => (
+              <li key={ind} className="hover:text-[#d6180b]">
+                {item}
+              </li>
+            ))}
+          </ul>
+          <div className="flex items-center gap-3">
+            {showGPTSearch && (
+              <select
+                className="p-2 text-white bg-black text-md rounded-md cursor-pointer"
+                onChange={handleLanguageChange}
+              >
+                {SUPPORTED_LANGUAGES.map((lang) => (
+                  <option key={lang.identifier} value={lang.identifier}>
+                    {lang.name}
+                  </option>
+                ))}
+              </select>
+            )}
+            <IoSearch fill="white" fontSize={20} />
+            <p className="text-white cursor-pointer ">Children</p>
+            <FaRegBell fill="white" fontSize={20} />
+            <button
+              onClick={handleGPTSearchClick}
+              className="p-2 text-white text-md rounded-md bg-[#191919] hover:bg-[#d6180b] transition-all duration-[.1s] font-medium"
             >
-              {SUPPORTED_LANGUAGES.map((lang) => (
-                <option key={lang.identifier} value={lang.identifier}>
-                  {lang.name}
-                </option>
-              ))}
-            </select>
-          )}
-          <button
-            onClick={handleGPTSearchClick}
-            className="p-2 text-white text-md rounded-md bg-[#e50914] hover:bg-[#d6180b] transition-all duration-[.1s] w-full font-medium"
-          >
-            {showGPTSearch ? "Home" : "GPTSearch"}
-          </button>
-          <img className="w-10 h-10" src={user?.photoURL} alt="profile-icon" />
-          <button
-            onClick={handleSignOut}
-            className="p-2 text-white text-md rounded-md bg-[#e50914] hover:bg-[#d6180b] transition-all duration-[.1s] w-full font-medium"
-          >
-            SignOut
-          </button>
-        </div>
+              {showGPTSearch ? "Home" : "GPT Search"}
+            </button>
+            <button
+              onClick={handleSignOut}
+              className="p-2 text-white text-md rounded-md bg-[#191919] hover:bg-[#d6180b] transition-all duration-[.1s] font-medium"
+            >
+              Sign Out
+            </button>
+            <img
+              className="w-10 h-10"
+              src={user?.photoURL}
+              alt="profile-icon"
+            />
+          </div>
+        </>
       )}
     </div>
   );
