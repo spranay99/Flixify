@@ -1,13 +1,30 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { API_OPTIONS } from "../utils/constants";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../utils/firebase";
 
 const WatchTrailer = () => {
   const movieId = useParams();
   const [movieKey, setMovieKey] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchMovieTrailer();
+  }, []);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (!user) {
+        navigate("/");
+      }
+      // else {
+      //   navigate("/browse/watch/" + movieId.id);
+      // }
+    });
+
+    //Unsubscribe when component unmounts.
+    return () => unsubscribe();
   }, []);
 
   const fetchMovieTrailer = async () => {
