@@ -1,23 +1,34 @@
-import React from "react";
+import React, { useRef } from "react";
 import MovieCard from "./MovieCard";
 import { FaAngleLeft } from "react-icons/fa6";
 import { FaAngleRight } from "react-icons/fa6";
 
 const MovieList = ({ title, movies }) => {
+  const movieCarouselRef = useRef();
+
+  const scrollWidth = window.innerWidth < 425 ? 208 : 624;
+
   const handleLeftScroll = () => {
-    const moviesList = document.querySelector(".movies");
-    moviesList.scrollLeft = moviesList.scrollLeft - 624;
+    movieCarouselRef.current.scrollTo({
+      left: movieCarouselRef.current.scrollLeft - scrollWidth,
+      behavior: "smooth",
+    });
   };
 
   const handleRightScroll = () => {
-    const moviesList = document.querySelector(".movies");
-    moviesList.scrollLeft = moviesList.scrollLeft + 624;
+    movieCarouselRef.current.scrollTo({
+      left: movieCarouselRef.current.scrollLeft + scrollWidth,
+      behavior: "smooth",
+    });
   };
 
   return (
     <div className="px-4 relative">
       <h1 className="text-2xl py-4 text-white font-semibold">{title}</h1>
-      <div className="flex overflow-x-scroll scroll-smooth no-scrollbar movies">
+      <div
+        ref={movieCarouselRef}
+        className="flex overflow-x-scroll scroll-smooth no-scrollbar movies"
+      >
         <div
           className="text-white absolute top-[55%] left-[2%] bg-black rounded-full p-2 cursor-pointer
           hover:bg-zinc-700"
