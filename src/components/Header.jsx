@@ -10,6 +10,8 @@ import { SUPPORTED_LANGUAGES } from "../utils/constants";
 import { changeLanguage } from "../utils/configSlice";
 import { FaRegBell } from "react-icons/fa6";
 import { IoSearch } from "react-icons/io5";
+import { IoMdHome } from "react-icons/io";
+import { SiOpenai } from "react-icons/si";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -58,13 +60,12 @@ const Header = () => {
   };
 
   return (
-    <div className="fixed w-screen px-12 py-2 z-50 flex justify-between items-center overflow-x-hidden bg-black">
-      <img src={Logo} alt="logo" className="w-32" />
+    <div className="fixed w-screen px-2 md:px-12 py-2 z-50 flex justify-between items-center overflow-x-hidden bg-black">
+      <img src={Logo} alt="logo" className="w-24 md:w-32" />
       {user && (
         <>
-          <ul className="flex gap-6 text-white cursor-pointer ">
+          <ul className="hidden lg:flex gap-6 text-white cursor-pointer ">
             {[
-              "Home",
               "TV Shows",
               "Movies",
               "Popular",
@@ -89,14 +90,17 @@ const Header = () => {
                 ))}
               </select>
             )}
-            <IoSearch fill="white" fontSize={20} />
-            <p className="text-white cursor-pointer ">Children</p>
-            <FaRegBell fill="white" fontSize={20} />
-            <button
-              onClick={handleGPTSearchClick}
-              className="p-2 text-white text-md rounded-md bg-[#191919] hover:bg-[#d6180b] transition-all duration-[.1s] font-medium"
-            >
-              {showGPTSearch ? "Home" : "GPT Search"}
+            <div className="hidden md:flex items-center gap-2">
+              <IoSearch fill="white" fontSize={20} />
+              <p className="text-white cursor-pointer ">Children</p>
+              <FaRegBell fill="white" fontSize={20} />
+            </div>
+            <button onClick={handleGPTSearchClick}>
+              {showGPTSearch ? (
+                <IoMdHome fill="white" fontSize={30} />
+              ) : (
+                <SiOpenai fill="white" fontSize={30} />
+              )}
             </button>
             <button
               onClick={handleSignOut}

@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { API_OPTIONS } from "../utils/constants";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../utils/firebase";
+import Logo from "../assets/Logo.png";
 
 const WatchTrailer = () => {
   const movieId = useParams();
@@ -18,19 +19,14 @@ const WatchTrailer = () => {
       if (!user) {
         navigate("/");
       }
-      // else {
-      //   navigate("/browse/watch/" + movieId.id);
-      // }
     });
-
-    //Unsubscribe when component unmounts.
     return () => unsubscribe();
   }, []);
 
   const fetchMovieTrailer = async () => {
     const movie = await fetch(
       "https://api.themoviedb.org/3/movie/" +
-        movieId.id +
+        movieId?.id +
         "/videos?language=en-US",
       API_OPTIONS
     );
@@ -43,11 +39,21 @@ const WatchTrailer = () => {
 
   return (
     <>
+      <div className="fixed w-screen px-2 md:px-12 py-2 bg-black cursor-pointer">
+        <Link to="/browse">
+          <img src={Logo} alt="logo" className="w-24 md:w-32" />
+        </Link>
+      </div>
       <div className="w-full h-screen text-center">
         <iframe
           width="100%"
           height="100%"
-          src={`https://www.youtube.com/embed/` + movieKey}
+          src={
+            `https://www.youtube.com/embed/` +
+            movieKey +
+            "?autoplay=0&mute=1&loop=1&playlist=" +
+            movieKey
+          }
           title="YouTube video player"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           referrerPolicy="strict-origin-when-cross-origin"
