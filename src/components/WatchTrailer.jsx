@@ -39,7 +39,7 @@ const WatchTrailer = () => {
 
   return (
     <>
-      <div className="fixed w-screen px-2 md:px-12 py-2 bg-black cursor-pointer">
+      <div className="fixed w-screen px-2 md:px-12 py-2 bg-black ">
         <Link to="/browse">
           <img src={Logo} alt="logo" className="w-24 md:w-32" />
         </Link>
@@ -51,7 +51,7 @@ const WatchTrailer = () => {
           src={
             `https://www.youtube.com/embed/` +
             movieKey +
-            "?autoplay=0&mute=1&loop=1&playlist=" +
+            "?autoplay=1&mute=1&loop=1&playlist=" +
             movieKey
           }
           title="YouTube video player"

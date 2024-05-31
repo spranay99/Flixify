@@ -21,3 +21,5 @@ export const SUPPORTED_LANGUAGES = [
   { identifier: "guj", name: "Gujarati" },
   { identifier: "mar", name: "Marathi" },
 ];
+
+export const GEMINI_API = "AIzaSyDP3Hikg8jJMvC_AUjQs05Bp24ErskvbiI";

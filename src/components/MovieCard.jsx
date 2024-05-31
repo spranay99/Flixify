@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 const MovieCard = ({ movie }) => {
   const { id, poster_path, title, release_date, vote_average } = movie;
 
+  if (!poster_path) return null;
+
   return (
     <Link to={`/browse/watch/${id}`}>
       <div className="w-48 overflow-hidden text-white">
