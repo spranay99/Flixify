@@ -11,7 +11,7 @@ import { changeLanguage } from "../utils/configSlice";
 import { FaRegBell } from "react-icons/fa6";
 import { IoSearch } from "react-icons/io5";
 import { IoMdHome } from "react-icons/io";
-import { SiOpenai } from "react-icons/si";
+import { SiGooglegemini } from "react-icons/si";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -99,7 +99,7 @@ const Header = () => {
               {showGPTSearch ? (
                 <IoMdHome fill="white" fontSize={30} />
               ) : (
-                <SiOpenai fill="white" fontSize={30} />
+                <SiGooglegemini fill="white" fontSize={30} />
               )}
             </button>
             <button

@@ -9,9 +9,13 @@ const MovieCard = ({ movie }) => {
 
   return (
     <Link to={`/browse/watch/${id}`}>
-      <div className="w-48 overflow-hidden text-white">
-        <div className="cursor-pointer transform transition-transform duration-300 hover:scale-110 rounded-lg overflow-hidden">
-          <img src={IMAGE_CDN_URL + poster_path} alt="Movie Name" />
+      <div className="w-48 text-white">
+        <div className="cursor-pointer  rounded-lg overflow-hidden">
+          <img
+            className="transform transition-transform duration-300 hover:scale-110"
+            src={IMAGE_CDN_URL + poster_path}
+            alt="Movie Name"
+          />
         </div>
         <span className="font-bold text-lg">
           {title.length > 20 ? `${title.substring(0, 18)}...` : title}

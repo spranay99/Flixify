@@ -32,7 +32,7 @@ const WatchTrailer = () => {
     );
     const json = await movie.json();
     const filterData = json.results.filter(
-      (video) => video.type === "Trailer" && video.name === "Official Trailer"
+      (video) => video.type === "Trailer" || video.name === "Official Trailer"
     );
     setMovieKey(filterData[0]?.key);
   };
