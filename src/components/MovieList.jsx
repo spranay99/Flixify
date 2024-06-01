@@ -6,18 +6,16 @@ import { FaAngleRight } from "react-icons/fa6";
 const MovieList = ({ title, movies }) => {
   const movieCarouselRef = useRef();
 
-  const scrollWidth = window.innerWidth < 425 ? 208 : 624;
-
   const handleLeftScroll = () => {
     movieCarouselRef.current.scrollTo({
-      left: movieCarouselRef.current.scrollLeft - scrollWidth,
+      left: movieCarouselRef.current.scrollLeft - 208,
       behavior: "smooth",
     });
   };
 
   const handleRightScroll = () => {
     movieCarouselRef.current.scrollTo({
-      left: movieCarouselRef.current.scrollLeft + scrollWidth,
+      left: movieCarouselRef.current.scrollLeft + 208,
       behavior: "smooth",
     });
   };

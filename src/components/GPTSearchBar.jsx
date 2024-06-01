@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import lang from "../utils/languageConstant";
 import { useDispatch, useSelector } from "react-redux";
 import { API_OPTIONS, GEMINI_API } from "../utils/constants";
-import { addGptMovieResult } from "../utils/gptSlice";
+import { addGptMovieResult, setGptSearchButton } from "../utils/gptSlice";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const GPTSearchBar = () => {
@@ -25,6 +25,8 @@ const GPTSearchBar = () => {
   };
 
   const handleGptsearchInput = async () => {
+    dispatch(setGptSearchButton());
+
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
     const gptQuery =
