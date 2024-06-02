@@ -44,22 +44,24 @@ const WatchTrailer = () => {
           <img src={Logo} alt="logo" className="w-24 md:w-32" />
         </Link>
       </div>
-      <div className="w-full h-screen text-center">
-        <iframe
-          width="100%"
-          height="100%"
-          src={
-            `https://www.youtube.com/embed/` +
-            movieKey +
-            "?autoplay=1&mute=1&loop=1&playlist=" +
-            movieKey
-          }
-          title="YouTube video player"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerPolicy="strict-origin-when-cross-origin"
-          allowFullScreen
-        ></iframe>
-      </div>
+      {movieKey && (
+        <div className="w-full h-screen text-center">
+          <iframe
+            width="100%"
+            height="100%"
+            src={
+              `https://www.youtube.com/embed/` +
+              movieKey +
+              "?autoplay=1&controls=0&mute=0&loop=1&playlist=" +
+              movieKey
+            }
+            title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+          ></iframe>
+        </div>
+      )}
     </>
   );
 };

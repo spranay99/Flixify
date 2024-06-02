@@ -1,8 +1,8 @@
 import React from "react";
-import Browse from "./Browse";
-import Login from "./Login";
+import Browse from "../pages/Browse";
+import Login from "../pages/Login";
+import WatchTrailer from "../pages/WatchTrailer";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import WatchTrailer from "./WatchTrailer";
 
 const Body = () => {
   const appRouter = createBrowserRouter([
