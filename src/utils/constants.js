@@ -22,4 +22,4 @@ export const SUPPORTED_LANGUAGES = [
   { identifier: "mar", name: "Marathi" },
 ];
 
-export const GEMINI_API = "AIzaSyDP3Hikg8jJMvC_AUjQs05Bp24ErskvbiI";
+export const GEMINI_API = import.meta.env.VITE_GEMINI_API;
