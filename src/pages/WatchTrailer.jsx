@@ -52,7 +52,7 @@ const WatchTrailer = () => {
             src={
               `https://www.youtube.com/embed/` +
               movieKey +
-              "?autoplay=1&controls=0&mute=0&loop=1&playlist=" +
+              "?autoplay=1&controls=0&loop=1&playlist=" +
               movieKey
             }
             title="YouTube video player"
