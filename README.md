@@ -1,4 +1,4 @@
-# Flixify 🍽️
+# Flixify 🍿
 
 Welcome to Flixify! - a revolutionary streaming web app that redefines how you enjoy entertainment which is set to transform your viewing experience.
 
